@@ -1,0 +1,28 @@
+extends ./layout.jade
+block content
+  div.container
+    div.content
+      h1 Welcome
+      p Welcome to the Yik Yak scraper. 
+      div(class='col-md-12')    
+        each yak in yaks 
+          div(class='row',style='border-top:solid 1px #000;')  
+            h3 Time
+            p Local Time: #{yak.time} 
+            if yak.gmt != null
+              p Our Time: #{yak.gmt}
+            else
+              p 
+                b This is the message always returned by the api... ignore!
+            h3 Message ID
+            p #{yak.messageID}
+            h3 Poster ID:
+            p #{yak.posterID}
+            h3 Content:
+            p #{yak.message}
+            h3 Lat/Lng:
+            p (#{yak.latitude},#{yak.longitude})
+            h3 Likes:
+            p #{yak.numberOfLikes}
+            br
+  div.footer
